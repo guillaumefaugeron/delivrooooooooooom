@@ -1,0 +1,147 @@
+@import "properties";
+
+nav {
+
+    & {
+        position: relative;
+        height: 60vh;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+    }
+
+    .buttons-nav {
+
+        position: absolute;
+        right: 2vw;
+        top: 3vh;
+
+        button {
+            color: #00CCBC;
+            font-weight: bold;
+            
+            img {
+                width: 30px;
+                height: 30px;
+                position: relative;
+            }
+
+            &:hover {
+                background: white;
+                color: $color_theme;
+            }
+        }
+    }
+
+    .search-nav {
+        position: absolute;
+        background: white;
+        border-radius: 3%;
+        bottom: 10vh;
+        left: 5vw;
+
+        form {
+            flex-direction: column;
+            height: 20vh;
+            justify-content: space-evenly;
+
+            button {
+                background-color: $color_theme;
+                border-color: $color_theme;
+
+                &:hover {
+                    background-color: $color_theme;  
+                    border-color: $color_theme; 
+                }
+            }
+        }
+    }
+}
+
+#content-container {
+
+    & {
+        display: flex;
+    }
+
+    #restaurants-container {
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+    
+        .card {
+
+            &.card-size-platform {
+                width: 18em;
+            }
+
+            margin: 2%;
+        
+            .card-body {
+        
+                position: relative;
+                
+                .time-to-deliver {
+                    position: absolute;
+                    right: 0;
+                    top: -2vh;
+                    background-color: $deliver_time_color;
+                    border-radius: 30%;
+                }
+            }
+        }
+    }
+
+    .filters {
+    
+        .filter-title {
+            margin-top: 2vh;
+        }
+
+        #{$filter_path} .filter {
+            margin-bottom: 5%;
+        }
+    }
+}
+
+@media screen and (max-width: $laptop_width) {
+    #content-container #restaurants-container .card.card-size-platform {
+        $card_size: 14em;
+        width: $card_size;
+    }
+}
+
+@media screen and (max-width: $phone_width) {
+    nav {
+        .search-nav {
+            bottom: 15vh;
+            left: 25vw;
+
+            .form-inline .form-group.mx-sm-3.mb-2 {
+                width: 80%;
+            }
+        }
+    }
+
+    #content-container {
+        flex-direction: column;
+
+        #restaurants-container {
+            justify-content: center;
+
+            .card.card-size-platform {
+                $card_size: 20em;
+                width: $card_size;
+            }
+        }
+
+        .filters {
+            display: none;
+        }
+    }
+}
